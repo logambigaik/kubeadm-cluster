@@ -8,13 +8,7 @@
 Kubeadm is a toolkit for bootstrapping a best-practises Kubernetes cluster on existing infrastructure. Kubeadm cannot provision your infrastructure which is one of the main differences to kops(Kops stands for Kubernetes operations. The tagline for the project is that it’s “the easiest way to get a production-grade Kubernetes cluster up and running”. Kops is sometimes referred to as the ‘kubectl’ for spinning up clusters). 
 Another differentiator is that Kubeadm can be used not only as an installer but also as a building block.
 
-
-
-Kubeadm is a tool built to provide kubeadm init and kubeadm join as best-practice "fast paths" for creating Kubernetes clusters.
-
-kubeadm performs the actions necessary to get a minimum viable cluster up and running. By design, it cares only about bootstrapping, not about provisioning machines. Likewise, installing various nice-to-have addons, like the Kubernetes Dashboard, monitoring solutions, and cloud-specific addons, is not in scope.
-
-Instead, we expect higher-level and more tailored tooling to be built on top of kubeadm, and ideally, using kubeadm as the basis of all deployments will make it easier to create conformant clusters
+![image](https://user-images.githubusercontent.com/54719289/111772552-e69d1380-88a4-11eb-974f-6d837c37c142.png)
 
 # Usage:
 
@@ -27,3 +21,7 @@ Instead, we expect higher-level and more tailored tooling to be built on top of 
         kubeadm version to print the kubeadm version
         kubeadm alpha to preview a set of features made available for gathering feedback from the community
 
+# Kubeadm vs kops
+
+        Kubeadm is in the middle of the stack and it runs on each node, and basically creates and then talks to the Kubernetes API.
+        Kops on the other hand is responsible for the entire lifecycle of the cluster, from infrastructure provisioning to upgrading to deleting, and it knows about everything:           nodes, masters, load balancers, cloud providers, monitoring, networking, logging etc.
