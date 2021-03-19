@@ -23,7 +23,7 @@ Another differentiator is that Kubeadm can be used not only as an installer but 
         Kubeadm is in the middle of the stack and it runs on each node, and basically creates and then talks to the Kubernetes API.
         Kops on the other hand is responsible for the entire lifecycle of the cluster, from infrastructure provisioning to upgrading to deleting, and it knows about everything:           nodes, masters, load balancers, cloud providers, monitoring, networking, logging etc.
 
-# Kubeadm installation:
+# Kubeadm installation: ( Install in both master and worker machine)
 
 
         Update the apt package index and install packages needed to use the Kubernetes apt repository:
@@ -44,3 +44,33 @@ Another differentiator is that Kubeadm can be used not only as an installer but 
         sudo apt-get update
         sudo apt-get install -y kubelet kubeadm kubectl
         sudo apt-mark hold kubelet kubeadm kubectl
+        
+        
+# Why swapoff -a is required?
+
+        swapoff -a
+        
+![image](https://user-images.githubusercontent.com/54719289/111790500-2a4e4800-88ba-11eb-80c0-bc8fb93c7122.png)
+
+
+        modprobe br_netfilter
+        sysctl -p
+        sudo sysct
+        sudo sysctl net.bridge.bridge-nf-call-iptables=1
+        apt-get install docker.io -y
+        usermod -aG docker ubuntu
+        systemctl enable docker
+        systemctl start docker
+        systemctl status docker
+        docker --version
+        
+        systemctl daemon-reload
+        systemctl start kubelet
+        systemctl enable kubelet.service
+        
+        
+        # run this command in master
+        kubeadm init
+        
+        
+        
