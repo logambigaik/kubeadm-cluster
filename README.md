@@ -1,5 +1,7 @@
 # kubeadmcluster
 
+
+https://drive.google.com/drive/u/2/folders/1QBO88j1DBsitahthSG0wmV5J4u2WZbe2
 # kubeadm:
 
 Kubeadm is a toolkit for bootstrapping a best-practises Kubernetes cluster on existing infrastructure. Kubeadm cannot provision your infrastructure which is one of the main differences to kops(Kops stands for Kubernetes operations. The tagline for the project is that it’s “the easiest way to get a production-grade Kubernetes cluster up and running”. Kops is sometimes referred to as the ‘kubectl’ for spinning up clusters). 
@@ -70,10 +72,28 @@ Another differentiator is that Kubeadm can be used not only as an installer but 
         systemctl daemon-reload
         systemctl start kubelet
         systemctl enable kubelet.service
-        
+  
+  # Note: kubeadm uses docker as container rntime hence its requires to install.
+  
+  
         
         # run this command in master
         kubeadm init
         
-        
-        
+  #For Linux:
+  
+  
+                cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+                [kubernetes]
+                name=Kubernetes
+                baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+                enabled=1
+                gpgcheck=1
+                repo_gpgcheck=1
+                gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+                EOF
+
+                setenforce 0
+                sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+                yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+    
