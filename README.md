@@ -54,6 +54,9 @@ Another differentiator is that Kubeadm can be used not only as an installer but 
 
 
         modprobe br_netfilter
+        
+        - This module is required to enable transparent masquerading and to facilitate Virtual Extensible LAN (VxLAN) traffic for communication between Kubernetes pods across   the cluster
+        
         sysctl -p
         sudo sysct
         sudo sysctl net.bridge.bridge-nf-call-iptables=1
